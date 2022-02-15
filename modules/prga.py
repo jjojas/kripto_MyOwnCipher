@@ -1,6 +1,18 @@
+'''
+Pseudo-random generation algorithm (PRGA)
+
+Generate keystream then 
+xor keystream chars with plaintext chars"
+'''
+
 from ksa import getSchedule,swap
 
-def encrypt(plaintext,key):
+def prga(plaintext,key):
+    '''
+    Execute PRG Algorithm
+    INPUT: Plaintext and RC4 Key
+    OUTPUT: Ciphertext
+    '''
     C = ""
     S = getSchedule(key)
     i = 0
@@ -10,7 +22,7 @@ def encrypt(plaintext,key):
         j = (j+S[i])%256
         S[i],S[j] = swap(S[i],S[j])
         t = (S[i]+S[j])%256
-        u = S[t]
+        u = S[t] # Keystream
         C+=(chr(u ^ ord(plaintext[idx])%256))
     return C
 
