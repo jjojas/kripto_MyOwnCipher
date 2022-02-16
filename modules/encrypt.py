@@ -2,6 +2,10 @@ from modules.prga import prga
 from modules import lfsr
 from modules.conversion_tool import byteToText
 
+# from prga import prga
+# import lfsr
+# from conversion_tool import byteToText
+
 def encryptText(plaintext,key):
     '''
     Encrypt given text with Modified RC4
@@ -24,9 +28,11 @@ def encryptBinaryFile(filedir,key):
     ext = filedir.split("/")[-1]
     f = open(filedir,"rb")
     s = f.read()
-    nf = prga(s.decode("ISO-8859-1") ,key)
+    decodeBinary = s.decode("ISO-8859-1")
+    byteKey = lfsr.generateByteKey(key, 8*len(decodeBinary))
+    # cipherText = byteToText(prga(decodeBinary, byteKey))
     g = open(f"cipher/files/encrypted_{ext}","wb")
-    g.write(bytes(nf,'ISO-8859-1'))
+    g.write(prga(decodeBinary, byteKey))
     g.close()
 
 def decryptBinaryFile(filedir,key):
@@ -38,9 +44,11 @@ def decryptBinaryFile(filedir,key):
     ext = filedir.split("/")[-1]
     f = open(filedir,"rb")
     s = f.read()
-    nf = prga(s.decode("ISO-8859-1") ,key)
+    decodeBinary = s.decode("ISO-8859-1")
+    byteKey = lfsr.generateByteKey(key, 8*len(decodeBinary))
+    # cipherText = byteToText(prga(decodeBinary, byteKey))
     g = open(f"cipher/files/decrypted_{ext}","wb")
-    g.write(bytes(nf,'ISO-8859-1'))
+    g.write(prga(decodeBinary, byteKey))
     g.close()
 
 def saveCipherToTextfile(content,filename):
@@ -52,3 +60,6 @@ def saveCipherToTextfile(content,filename):
     f = open(f"cipher/text/{filename}.txt","w+")
     f.write(content)
     f.close()
+
+if __name__ == "__main__":
+    print(encryptBinaryFile("C:/Users/Asus/Downloads/1645007389929.jpg","A"))

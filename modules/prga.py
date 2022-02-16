@@ -6,13 +6,12 @@ xor keystream chars with plaintext chars"
 '''
 
 from modules.ksa import getSchedule,swap
-from modules import conversion_tool
 
 def prga(plaintext,key):
     '''
     Execute PRG Algorithm
     INPUT: Plaintext and RC4 Key
-    OUTPUT: Ciphertext
+    OUTPUT: Cipher in byte form
     '''
     C = bytearray(b'')
     S = getSchedule(key)
