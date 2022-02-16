@@ -25,7 +25,7 @@ def permute(arr,key):
     '''
     j = 0
     for i in range(256):
-        j = (j + arr[i] + ord(key[i%len(key)]))%256
+        j = (j + arr[i] + key[i%len(key)])%256
         arr[i],arr[j] = swap(arr[i],arr[j])
 
 def getSchedule(key):
