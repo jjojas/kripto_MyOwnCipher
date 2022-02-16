@@ -6,18 +6,15 @@ from modules.conversion_tool import byteToText
 # import lfsr
 # from conversion_tool import byteToText
 
-def encryptText(plaintext,key):
+def encryptDecryptText(text,key):
     '''
-    Encrypt given text with Modified RC4
-    INPUT: plain text and RC4 key
-    OUTPUT: encrypted text
+    Encrypt or decrypt given text with Modified RC4
+    INPUT: text and RC4 key
+    OUTPUT: encrypted/decrypted text
     '''
-    byteKey = lfsr.generateByteKey(key, 8*len(plaintext))
-    cipherText = prga(plaintext, byteKey)
+    byteKey = lfsr.generateByteKey(key, 8*len(text)*len(key))
+    cipherText = prga(text, byteKey)
     return byteToText(cipherText)
-
-def decryptText(plaintext,key):
-    return ""
 
 def encryptBinaryFile(filedir,key):
     '''
