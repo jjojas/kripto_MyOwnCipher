@@ -1,4 +1,10 @@
-from prga import prga
+from modules.prga import prga
+
+def encryptText(plaintext,key):
+    return ""
+
+def decryptText(plaintext,key):
+    return ""
 
 def encryptBinaryFile(filedir,key):
     '''
@@ -27,3 +33,13 @@ def decryptBinaryFile(filedir,key):
     g = open(f"cipher/files/decrypted_{ext}","wb")
     g.write(bytes(nf,'ISO-8859-1'))
     g.close()
+
+def saveCipherToTextfile(content,filename):
+    '''
+    Save ciphertext to text file
+    INPUT: string
+    OUTPUT: splitted string
+    '''
+    f = open(f"cipher/text/{filename}.txt","w+")
+    f.write(content)
+    f.close()

@@ -5,7 +5,7 @@ Generate keystream then
 xor keystream chars with plaintext chars"
 '''
 
-from ksa import getSchedule,swap
+from modules.ksa import getSchedule,swap
 
 def prga(plaintext,key):
     '''
