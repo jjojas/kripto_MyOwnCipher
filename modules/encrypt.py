@@ -1,7 +1,16 @@
 from modules.prga import prga
+from modules import lfsr
+from modules.conversion_tool import byteToText
 
 def encryptText(plaintext,key):
-    return ""
+    '''
+    Encrypt given text with Modified RC4
+    INPUT: plain text and RC4 key
+    OUTPUT: encrypted text
+    '''
+    byteKey = lfsr.generateByteKey(key, 8*len(plaintext))
+    cipherText = prga(plaintext, byteKey)
+    return byteToText(cipherText)
 
 def decryptText(plaintext,key):
     return ""
