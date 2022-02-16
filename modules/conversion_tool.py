@@ -1,3 +1,9 @@
+'''
+Conversion Tool 
+
+Collection function to convert bit, byte, and text 
+'''
+
 import sys
 import binascii
 
