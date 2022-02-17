@@ -5,7 +5,6 @@ Generate keystream
 '''
 
 from modules.conversion_tool import textToBit, bitToByte, byteToText
-# from conversion_tool import textToBit, bitToByte, byteToText
 
 
 def registerShift(bitKey, addBit):

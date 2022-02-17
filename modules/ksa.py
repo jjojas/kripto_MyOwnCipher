@@ -4,6 +4,9 @@ Key-Scheduling Algorithm (KSA)
 Generate key schedule based on user key"
 '''
 
+import collections
+from tempfile import tempdir
+
 def init(arr):
     '''
     Generate array
@@ -27,6 +30,12 @@ def permute(arr,key):
     for i in range(256):
         j = (j + arr[i] + key[i%len(key)])%256
         arr[i],arr[j] = swap(arr[i],arr[j])
+        
+    # right-shift
+    temp_arr = collections.deque(arr)
+    temp_arr.rotate(j)
+    arr.clear()
+    arr += list(temp_arr)
 
 def getSchedule(key):
     '''

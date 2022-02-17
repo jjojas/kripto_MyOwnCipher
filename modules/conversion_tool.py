@@ -34,3 +34,9 @@ def byteToText(byte):
             text+='\\x{:02x}'.format(intByte)
 
     return text
+
+    # text = ''
+    # for intByte in byte:
+    #     text+=chr(intByte)
+
+    # return text
