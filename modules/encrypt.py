@@ -1,10 +1,11 @@
+'''
+Main Program
+Encrypt and Decrypt
+'''
+
 from modules.prga import prga
 from modules import lfsr
-from modules.conversion_tool import bitToByte, byteToText, textToBit
-
-# from prga import prga
-# import lfsr
-# from conversion_tool import byteToText
+from modules.conversion_tool import byteToText
 
 def encryptText(plaintext,key):
     '''
@@ -37,7 +38,6 @@ def encryptBinaryFile(filedir,key):
     s = f.read()
     decodeBinary = s.decode("ISO-8859-1")
     byteKey = lfsr.generateByteKey(key, 8*len(decodeBinary))
-    # cipherText = byteToText(prga(decodeBinary, byteKey))
     g = open(f"cipher/files/encrypted_{ext}","wb")
     g.write(prga(decodeBinary, byteKey))
     g.close()
@@ -53,7 +53,6 @@ def decryptBinaryFile(filedir,key):
     s = f.read()
     decodeBinary = s.decode("ISO-8859-1")
     byteKey = lfsr.generateByteKey(key, 8*len(decodeBinary))
-    # cipherText = byteToText(prga(decodeBinary, byteKey))
     g = open(f"cipher/files/decrypted_{ext}","wb")
     g.write(prga(decodeBinary, byteKey))
     g.close()
@@ -67,6 +66,3 @@ def saveCipherToTextfile(content,filename):
     f = open(f"cipher/text/{filename}.txt","wb")
     f.write(content.encode("ISO-8859-1"))
     f.close()
-
-if __name__ == "__main__":
-    print(encryptBinaryFile("C:/Users/Asus/Downloads/1645007389929.jpg","A"))

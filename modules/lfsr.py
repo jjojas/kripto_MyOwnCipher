@@ -41,16 +41,4 @@ def generateByteKey(plainKey, bitLength):
 		addBit = feedBack(bitKey)
 		bitKey,tempRes = registerShift(bitKey, addBit)
 		generatedKey+=tempRes
-	# print(generatedKey)
-	# print(len(generatedKey))
-	# print(bitToByte(generatedKey))
-	# ASCII_values = list(bitToByte(generatedKey))
-	# print(ASCII_values)
-	# print("".join([chr(value) for value in ASCII_values]))
 	return bitToByte(generatedKey)
-
-# generateByteKey("Let's grab a 🍕!",160)
-# # print(textToBit("halo slmt pagi!"))
-# print(byteToText(bitToByte('10011000110010101110100001001110111001100100000011001110111001001100001011000100010000001100001001000001111000010011111100011011001010100100001')))
-# k = b"Let's grab a \xf0\x9f\x8d\x95!"
-# print(k.decode('unicode-escape').encode('latin1').decode('utf8'))

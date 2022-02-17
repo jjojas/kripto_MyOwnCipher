@@ -5,7 +5,6 @@ Generate key schedule based on user key"
 '''
 
 import collections
-from tempfile import tempdir
 
 def init(arr):
     '''
