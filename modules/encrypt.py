@@ -1,6 +1,6 @@
 from modules.prga import prga
 from modules import lfsr
-from modules.conversion_tool import byteToText
+from modules.conversion_tool import bitToByte, byteToText, textToBit
 
 # from prga import prga
 # import lfsr
@@ -64,8 +64,8 @@ def saveCipherToTextfile(content,filename):
     INPUT: string
     OUTPUT: splitted string
     '''
-    f = open(f"cipher/text/{filename}.txt","w+")
-    f.write(content)
+    f = open(f"cipher/text/{filename}.txt","wb")
+    f.write(content.encode("ISO-8859-1"))
     f.close()
 
 if __name__ == "__main__":
