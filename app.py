@@ -39,7 +39,7 @@ class rc4Widget(qtw.QWidget):
             ptextBox.setText(rep[:-1][1:])
 
         def save():
-            encr.saveCipherToTextfile(ctextBox.text(),saveLine.text())
+            encr.saveCipherToTextfile(repr(ctextBox.text()),saveLine.text())
             msg = QMessageBox()
             msg.setText("File tersimpan!")
             msg.setInformativeText(f'Cipherteks berhasil disimpan pada direktori cipher/text/{saveLine.text()}.txt')
