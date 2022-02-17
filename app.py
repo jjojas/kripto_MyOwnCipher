@@ -24,18 +24,11 @@ class rc4Widget(qtw.QWidget):
     def initUI(self):
         def encrypt():
             cipherCache = encr.encryptText(ptextBox.text(),ktextBox.text())
-            # splitted = vig.splitStringTo5Chars(rep)
             ctextBox.setText(cipherCache)
-            # options = qtw.QFileDialog.Options()
-            # options |= qtw.QFileDialog.DontUseNativeDialog
-            # fileName, _ = qtw.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
-            # if fileName:
-            #     print(fileName)
 
         def decrypt():
             c = encr.decryptText(ctextBox.text(),ktextBox.text())
             rep = repr(c)
-            # splitted = vig.splitStringTo5Chars(rep)
             ptextBox.setText(rep[:-1][1:])
 
         def save():
@@ -52,14 +45,14 @@ class rc4Widget(qtw.QWidget):
                 options |= qtw.QFileDialog.DontUseNativeDialog
                 fileName, _ = qtw.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*)", options=options)
                 if fileName:
-                    # try:
-                    encr.encryptBinaryFile(fileName,ktextBox.text())
-                    msg = QMessageBox()
-                    msg.setText(f"Filemu berhasil dienkripsi di cipher/files/encrypted_{fileName.split('/')[-1]}")
-                    msg.setWindowTitle("Enkripsi Berhasil")
-                    msg.exec_()
-                    # except Exception as e:
-                    #     print(e)
+                    try:
+                        encr.encryptBinaryFile(fileName,ktextBox.text())
+                        msg = QMessageBox()
+                        msg.setText(f"Filemu berhasil dienkripsi di cipher/files/encrypted_{fileName.split('/')[-1]}")
+                        msg.setWindowTitle("Enkripsi Berhasil")
+                        msg.exec_()
+                    except Exception as e:
+                        print(e)
             else:
                 msg = QMessageBox()
                 msg.setText("Cipher key tidak boleh kosong!")
