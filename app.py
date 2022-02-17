@@ -32,12 +32,19 @@ class rc4Widget(qtw.QWidget):
             ptextBox.setText(rep[:-1][1:])
 
         def save():
-            encr.saveCipherToTextfile(repr(ctextBox.text()),saveLine.text())
-            msg = QMessageBox()
-            msg.setText("File tersimpan!")
-            msg.setInformativeText(f'Cipherteks berhasil disimpan pada direktori cipher/text/{saveLine.text()}.txt')
-            msg.setWindowTitle("Simpan berhasil")
-            msg.exec_()
+            if len(saveLine.text()) != 0 :
+                encr.saveCipherToTextfile(ctextBox.text(),saveLine.text())
+                msg = QMessageBox()
+                msg.setText("File tersimpan!")
+                msg.setInformativeText(f'Cipherteks berhasil disimpan pada direktori cipher/text/{saveLine.text()}.txt')
+                msg.setWindowTitle("Simpan berhasil")
+                msg.exec_()
+            else:
+                msg = QMessageBox()
+                msg.setText("Nama File tidak boleh kosong!")
+                msg.setWindowTitle("Simpan gagal")
+                msg.exec_()
+
 
         def encryptBinaryFile():
             if (len(ktextBox.text()) != 0):
